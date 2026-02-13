@@ -4,23 +4,42 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- OSを判定する変数を定義
+local is_windows = wezterm.target_triple:find("windows") ~= nil
+local is_mac = wezterm.target_triple:find("apple") ~= nil
+
 ----------------------------------------------------
 -- Main screen
 ----------------------------------------------------
--- wsl.exe
-config.default_prog = { "wsl.exe", "-d", "Ubuntu", "--cd", "~" }
-config.launch_menu = {
-  { label = 'PowerShell', args = { 'powershell.exe' } },
-  { label = 'Ubuntu', args = { 'wsl.exe', '-d', 'Ubuntu', '--cd', '~' } },
-  { label = 'Kali Linux', args = { 'wsl.exe', '-d', 'kali-linux', '--cd', '~' } },
-}
-
+-- OSごとの個別設定
+if is_windows then
+    -- Windowsの場合：WSLをデフォルトのドメインにする
+    -- wsl.exe
+    config.default_prog = { "wsl.exe", "-d", "Ubuntu", "--cd", "~" }
+    config.launch_menu = {
+      { label = 'PowerShell', args = { 'powershell.exe' } },
+      { label = 'Ubuntu', args = { 'wsl.exe', '-d', 'Ubuntu', '--cd', '~' } },
+      { label = 'Kali Linux', args = { 'wsl.exe', '-d', 'kali-linux', '--cd', '~' } },
+    }
+elseif is_mac then
+    -- MacでHomebrewなどのzshを使いたい場合は明示的に指定
+    -- 指定しない場合は、システム標準のシェルが起動します
+    config.default_prog = { '/bin/zsh', '--login' }
+    
+    -- Mac用の起動メニュー（任意）
+    config.launch_menu = {
+      { label = 'Zsh', args = { 'zsh' } },
+      { label = 'Bash', args = { 'bash' } },
+    }
+end
+  
 -- other settings
 config.automatically_reload_config = true
 config.font_size = 12.0
 config.use_ime = true
-config.window_background_opacity = 0.80
-config.macos_window_background_blur = 20
+config.window_background_opacity = 0.85
+config.macos_window_background_blur = 3
+
 
 ----------------------------------------------------
 -- Tab
