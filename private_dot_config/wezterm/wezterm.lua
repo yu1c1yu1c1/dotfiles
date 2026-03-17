@@ -25,14 +25,19 @@ elseif is_mac then
     -- MacでHomebrewなどのzshを使いたい場合は明示的に指定
     -- 指定しない場合は、システム標準のシェルが起動します
     config.default_prog = { '/bin/zsh', '--login' }
-    
+
     -- Mac用の起動メニュー（任意）
     config.launch_menu = {
       { label = 'Zsh', args = { 'zsh' } },
       { label = 'Bash', args = { 'bash' } },
     }
+
+    -- Mac用Optionキー動作変更
+    config.send_composed_key_when_left_alt_is_pressed = false
+    config.send_composed_key_when_right_alt_is_pressed = false
+
 end
-  
+
 -- other settings
 config.automatically_reload_config = true
 config.font_size = 12.0
