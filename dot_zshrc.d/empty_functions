@@ -1,0 +1,21 @@
+# peco履歴検索機能
+function peco-history-selection() {
+    # 履歴を逆順で取得（新しいものから古いものへ）
+    BUFFER=$(history -r -n 1 | peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+# peco + ghq
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --prompt="repositories >" --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+
+# zleに関数を登録
+zle -N peco-history-selection

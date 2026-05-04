@@ -1,8 +1,23 @@
 # Path
-PATH="/opt/homebrew/bin:$PATH"
-PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="$HOME/.local/bin:$PATH:$HOME/go/bin"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Color
+export TERM="xterm-256color"
 
 # Editor
 export EDITOR=nvim
 export VISUAL=nvim
 
+# 履歴設定（必要に応じて追加）
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
