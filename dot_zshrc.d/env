@@ -1,5 +1,6 @@
 # Path
 PATH="/opt/homebrew/bin:$PATH"
+PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Editor
 export EDITOR=nvim
