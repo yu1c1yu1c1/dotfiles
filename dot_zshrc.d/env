@@ -1,0 +1,9 @@
+# Path
+PATH="/opt/homebrew/bin:$PATH"
+
+# Editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Test
+export TEST="hello everyone!"

@@ -50,10 +50,10 @@ return {
                 action = wezterm.action_callback(function(window, pane, line)
                     if line then
                         window:perform_action(
-                        act.SwitchToWorkspace({
-                            name = line,
-                        }),
-                        pane
+                            act.SwitchToWorkspace({
+                                name = line,
+                            }),
+                            pane
                         )
                     end
                 end),
@@ -220,6 +220,21 @@ return {
             { key = "Escape", mods = "NONE", action = act.CopyMode("Close") },
             { key = "c", mods = "CTRL", action = act.CopyMode("Close") },
             { key = "q", mods = "NONE", action = act.CopyMode("Close") },
+
+            -- 単語単位移動 for Mac
+            {
+                key = 'LeftArrow',
+                mods = 'ALT',
+                action = act.SendKey {
+                    key = 'b',
+                    mods = 'ALT',
+                },
+            },
+            {
+                key = 'RightArrow',
+                mods = 'ALT',
+                action = act.SendKey { key = 'f', mods = 'ALT' },
+            },
         },
     },
 }

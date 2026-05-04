@@ -92,3 +92,8 @@ alias bat="batcat"
 
 # Starship
 eval "$(starship init zsh)"
+
+# その他設定ファイルの読み込み 
+for f in ~/.zshrc.d/*; do
+  source "$f"
+done
