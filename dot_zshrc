@@ -38,8 +38,6 @@ for f in ~/.zshrc.d/*; do
   source "$f"
 done
 
-
-
 # Ctrl+Rにバインド
 bindkey '^R' peco-history-selection
 
