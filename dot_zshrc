@@ -41,8 +41,11 @@ done
 # Ctrl+Rにバインド
 bindkey '^R' peco-history-selection
 
-source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
+# tmux
+bindkey -e
 
 # Starship
 eval "$(starship init zsh)"
 
+
+source /home/kali/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script

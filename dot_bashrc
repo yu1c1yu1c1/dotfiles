@@ -155,4 +155,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/.safe-chain/scripts/init-posix.sh # Safe-chain bash initialization script
+source /home/kali/.safe-chain/scripts/init-posix.sh # Safe-chain bash initialization script
